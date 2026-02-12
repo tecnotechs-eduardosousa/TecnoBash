@@ -15,19 +15,19 @@ function tb__bootstrap_repo_path() {
 
     local this_file this_dir trace_file
 
-    if (( ${#funcfiletrace[@]} > 0 )); then
-        trace_file="${funcfiletrace[1]%:*}"
-        if [[ -f "$trace_file" ]]; then
-            this_file="$trace_file"
+        if (( ${#funcfiletrace[@]} > 0 )); then
+            trace_file="${funcfiletrace[1]%:*}"
+            if [[ -f "$trace_file" ]]; then
+                this_file="$trace_file"
+            fi
         fi
-    fi
 
-    if [[ -z "$this_file" ]]; then
-        this_file="${(%):-%x}"
-        if [[ -z "$this_file" || ! -f "$this_file" ]]; then
-            this_file="${(%):-%N}"
+        if [[ -z "$this_file" ]]; then
+            this_file="${(%):-%x}"
+            if [[ -z "$this_file" || ! -f "$this_file" ]]; then
+                this_file="${(%):-%N}"
+            fi
         fi
-    fi
 
     if [[ -n "$this_file" && -f "$this_file" ]]; then
         this_file="${this_file:A}"
@@ -65,6 +65,7 @@ function getTecnoBashFiles() {
     getConfigsFiles
     getAttendantFile
     getDesignFiles
+    getFunctionsFiles
 }
 
 function getConfigsFiles() {
@@ -90,6 +91,18 @@ function getDesignFiles() {
     if [[ -d "$TECNO_BASH_FILES/Design" ]]; then
         local function_count=0
         for function_file in "$TECNO_BASH_FILES/Design"/*.sh; do
+            if [[ -f "$function_file" ]]; then
+                source "$function_file"
+                ((function_count++))
+            fi
+        done
+    fi
+}
+
+function getFunctionsFiles() {
+    if [[ -d "$TECNO_BASH_FILES/Functions" ]]; then
+        local function_count=0
+        for function_file in "$TECNO_BASH_FILES/Functions"/*.sh; do
             if [[ -f "$function_file" ]]; then
                 source "$function_file"
                 ((function_count++))
