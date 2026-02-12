@@ -8,15 +8,14 @@ ADAPT_PATH="$HOME/Desenvolvimento/SITAC/adapt"
 SERVICOS_PATH="$HOME/Desenvolvimento/SITAC/servicos"
 EXTRAS_PATH="$HOME/Desenvolvimento/SITAC/extras"
 
-SITAG_ADAPT_PATH="$HOME/Desenvolvimento/sitag/sitag-corp"
-SITAG_SERVICOS_PATH="$HOME/Desenvolvimento/sitag/sitag-serv"
-SITAG_EXTRAS_PATH="$HOME/Desenvolvimento/sitag/sitag-extras"
+# SITAG_ADAPT_PATH="$HOME/Desenvolvimento/sitag/sitag-corp"
+# SITAG_SERVICOS_PATH="$HOME/Desenvolvimento/sitag/sitag-serv"
+# SITAG_EXTRAS_PATH="$HOME/Desenvolvimento/sitag/sitag-extras"
 
 TB_DOCKER_DATA_ROOT="/data"
 TB_DOCKER_CONTAINER="sitac"
 
 function tb_load_paths() {
-    echo "tb_load_paths"
     local -a required_dirs=(
         TECNO_BASH_FILES
         ADAPT_PATH
