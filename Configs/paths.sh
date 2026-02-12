@@ -8,9 +8,9 @@ ADAPT_PATH="$HOME/Desenvolvimento/SITAC/adapt"
 SERVICOS_PATH="$HOME/Desenvolvimento/SITAC/servicos"
 EXTRAS_PATH="$HOME/Desenvolvimento/SITAC/extras"
 
-# SITAG_ADAPT_PATH="$HOME/Desenvolvimento/sitag/sitag-corp"
-# SITAG_SERVICOS_PATH="$HOME/Desenvolvimento/sitag/sitag-serv"
-# SITAG_EXTRAS_PATH="$HOME/Desenvolvimento/sitag/sitag-extras"
+SITAG_ADAPT_PATH="$HOME/Desenvolvimento/sitag/sitag-corp"
+SITAG_SERVICOS_PATH="$HOME/Desenvolvimento/sitag/sitag-serv"
+SITAG_EXTRAS_PATH="$HOME/Desenvolvimento/sitag/sitag-extras"
 
 TB_DOCKER_DATA_ROOT="/data"
 TB_DOCKER_CONTAINER="sitac"
@@ -21,9 +21,6 @@ function tb_load_paths() {
         ADAPT_PATH
         SERVICOS_PATH
         EXTRAS_PATH
-        SITAG_ADAPT_PATH
-        SITAG_SERVICOS_PATH
-        SITAG_EXTRAS_PATH
     )
 
     local -a required_values=(
