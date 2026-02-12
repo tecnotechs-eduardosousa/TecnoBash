@@ -95,7 +95,7 @@ function tb_fzf_select() {
             --list-label-pos=0 \
             --info=inline-right \
             --info-command="echo Branch atual: ${branch}" \
-            --color="border:yellow,label:yellow:bold,prompt:yellow:bold" \
+            --color="border:#ffaf00,label:#ffaf00:bold,prompt:#ffaf00:bold" \
             --pointer="▶" \
             --marker="✓" \
             --preview="$preview_cmd" \
