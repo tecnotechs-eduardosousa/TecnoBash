@@ -122,8 +122,8 @@ function tecnobash(){
         "Push|Functions/pushes.sh|push"
         "Criar Branch de Ticket|Functions/ticket.sh|crtkt"
         "Trocar Branch de Ticket|Functions/ticket.sh|tkt"
-        "Executar Testes (phpunit)|Functions/ticket-testing.sh|test"
-        "Executar Testes (interativo)|Functions/ticket-testing.sh|testi"
+        "Executar Testes Unitários|Functions/ticket-testing.sh|test"
+        "Executar Testes de Integração|Functions/ticket-testing.sh|testi"
         "Dar Permissão a Arquivo|Functions/permission.sh|such"
         "Entrar SITAG Corporativo (sad)|Functions/folder-switching.sh|sad"
         "Entrar SITAC Corporativo (ad)|Functions/folder-switching.sh|ad"
@@ -148,7 +148,7 @@ function tecnobash(){
         "Git" $'Efetuar commit|Functions/commit.sh|commit\nDesfazer último commit (soft)|Functions/commit.sh|soft\nPull|Functions/pulls.sh|pull\nPull Corporativo e Serviços|Functions/pulls.sh|cpull\nPull Diário|Functions/pulls.sh|dp\nPush|Functions/pushes.sh|push'
         "Tickets" $'Criar Branch de Ticket|Functions/ticket.sh|crtkt\nTrocar Branch de Ticket|Functions/ticket.sh|tkt'
         "Branches" $'Trocar para branch de Desenvolvimento|Functions/main-branches-switching.sh|dev\nTrocar para branch de Produção|Functions/main-branches-switching.sh|prod'
-        "Testes" $'Executar Testes (phpunit)|Functions/ticket-testing.sh|test\nExecutar Testes (interativo)|Functions/ticket-testing.sh|testi'
+        "Testes" $'Executar Testes Unitários|Functions/ticket-testing.sh|test\nExecutar Testes de Integração|Functions/ticket-testing.sh|testi'
         "Permissões" $'Dar Permissão a Arquivo|Functions/permission.sh|such'
         "Pastas" $'Entrar SITAG Corporativo (sad)|Functions/folder-switching.sh|sad\nEntrar SITAC Corporativo (ad)|Functions/folder-switching.sh|ad\nEntrar SITAG Serviços (ssv)|Functions/folder-switching.sh|ssv\nEntrar SITAC Serviços (sv)|Functions/folder-switching.sh|sv\nEntrar SITAG Extras (ste)|Functions/folder-switching.sh|ste\nEntrar SITAC Extras (ext)|Functions/folder-switching.sh|ext'
         "CREA" $'Trocar de CREA|Functions/crea.sh|crea'
