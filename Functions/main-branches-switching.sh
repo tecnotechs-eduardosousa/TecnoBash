@@ -25,6 +25,32 @@ function dev() {
     fi
 }
 
+function dev26() {
+    print_info "Entrando na branch Desenvolvimento_2026..."
+    sleep 0.4
+
+    if git switch Desenvolvimento_2026 2>/dev/null; then
+        print_success "Agora você está em: ${bold}${ciano}Desenvolvimento_2026${reset}"
+    else
+        print_error "Não foi possível entrar na branch Desenvolvimento_2026"
+        sleep 0.8
+        clear
+        return 1
+    fi
+
+    # Caso tenha entrado na branch Desenvolvimento_2026
+    show_loading "Efetuando pull em Desenvolvimento_2026" 1
+
+    if git pull tecnotechs Desenvolvimento_2026 2>/dev/null; then
+        print_success "Pull efetuado com sucesso em ${bold}Desenvolvimento_2026${reset}${verde}!${reset}"
+    else
+        print_error "Não foi possível efetuar pull em Desenvolvimento_2026"
+        sleep 2
+        clear
+        return 1
+    fi
+}
+
 function prod() {
     print_info "Entrando na branch Producao..."
     sleep 0.4
