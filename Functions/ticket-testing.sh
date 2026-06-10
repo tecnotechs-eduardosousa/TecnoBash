@@ -33,6 +33,14 @@ function tb_phpunit__print_separator() {
     printf '%*s\n' "$width" '' | tr ' ' '-'
 }
 
+function tb_phpunit__can_style_output() {
+    [[ -t 1 ]] || return 1
+    [[ -z "${NO_COLOR:-}" ]] || return 1
+    [[ "${TERM:-}" != "dumb" ]] || return 1
+
+    return 0
+}
+
 function tb_phpunit__usage() {
     local command_name="$1"
     local suite_label="$2"
@@ -130,9 +138,52 @@ function tb_phpunit__print_issue_cards() {
     local project_dir="$2"
     local suite_dir="$3"
     local command_name="$4"
+    local color_issue=""
+    local color_test=""
+    local color_label=""
+    local color_path=""
+    local color_focus=""
+    local color_dim=""
+    local color_reset=""
 
-    awk -v project="$project_dir" -v suite="$suite_dir" -v command_name="$command_name" '
-        function flush_issue(    i, line, message_count, joined, test_name, method_name, location, relative_path, focus_path) {
+    if tb_phpunit__can_style_output; then
+        color_issue="${vermelho:-$'\033[38;5;196m'}"
+        color_test="${bold:-$'\033[1m'}${branco:-$'\033[38;5;231m'}"
+        color_label="${cinza:-$'\033[38;5;246m'}"
+        color_path="${ciano:-$'\033[38;5;51m'}"
+        color_focus="${amarelo:-$'\033[38;5;226m'}"
+        color_dim="${dim:-$'\033[2m'}${cinza:-$'\033[38;5;246m'}"
+        color_reset="${reset:-$'\033[0m'}"
+    fi
+
+    awk \
+        -v project="$project_dir" \
+        -v suite="$suite_dir" \
+        -v command_name="$command_name" \
+        -v color_issue="$color_issue" \
+        -v color_test="$color_test" \
+        -v color_label="$color_label" \
+        -v color_path="$color_path" \
+        -v color_focus="$color_focus" \
+        -v color_dim="$color_dim" \
+        -v color_reset="$color_reset" '
+        function repeat(char, count,    text) {
+            text = ""
+            while (count-- > 0) {
+                text = text char
+            }
+            return text
+        }
+
+        function print_field(label, value, value_color) {
+            if (value == "") {
+                return
+            }
+
+            printf "  %s%-8s%s : %s%s%s\n", color_label, label, color_reset, value_color, value, color_reset
+        }
+
+        function flush_issue(    i, line, message_count, joined, test_name, method_name, location, relative_path, focus_path, focus_command, title, fill_count) {
             if (header == "") {
                 return
             }
@@ -169,10 +220,27 @@ function tb_phpunit__print_issue_cards() {
             focus_path = relative_path
             sub(/:[0-9]+$/, "", focus_path)
 
-            printf " [%s] %s\n", issue_index, test_name
+            if (location != "") {
+                focus_command = command_name " " project " " focus_path " --filter " method_name
+            } else {
+                focus_command = command_name " " project " --filter " method_name
+            }
+
+            if (printed_issue_count > 0) {
+                printf "\n"
+            }
+
+            title = " Falha " issue_index " "
+            fill_count = 76 - length(title)
+            if (fill_count < 0) {
+                fill_count = 0
+            }
+
+            printf "%s%s%s%s\n", color_dim, title, repeat("-", fill_count), color_reset
+            printf "  %sTeste%s    : %s%s%s\n", color_label, color_reset, color_test, test_name, color_reset
 
             if (message_count >= 1) {
-                printf "   Motivo : %s\n", issue_messages[1]
+                print_field("Motivo", issue_messages[1], color_issue)
             }
 
             if (message_count >= 2) {
@@ -180,17 +248,15 @@ function tb_phpunit__print_issue_cards() {
                 for (i = 3; i <= message_count; i++) {
                     joined = joined " | " issue_messages[i]
                 }
-                printf "   Detalhe: %s\n", joined
+                print_field("Detalhe", joined, "")
             }
 
             if (location != "") {
-                printf "   Arquivo: %s\n", relative_path
-                printf "   Foco   : %s %s %s --filter %s\n", command_name, project, focus_path, method_name
-            } else {
-                printf "   Foco   : %s %s --filter %s\n", command_name, project, method_name
+                print_field("Arquivo", relative_path, color_path)
             }
 
-            printf "\n"
+            print_field("Foco", focus_command, color_focus)
+            printed_issue_count++
 
             delete issue_messages
             delete block_lines
