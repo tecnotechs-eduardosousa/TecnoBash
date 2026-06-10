@@ -1,4 +1,27 @@
 
+# Buscar o maior número de parte (Pt.X) nos últimos 50 commits para um dado ticket
+tb__find_highest_part() {
+    local ticket_number="$1"
+
+    local log_output
+    log_output=$(git log -50 --pretty=format:"%s" 2>/dev/null)
+
+    if [[ $? -ne 0 ]]; then
+        print_warning "Não foi possível ler histórico de commits, iniciando em Pt.1"
+        echo "1"
+        return 0
+    fi
+
+    local max_part
+    max_part=$(echo "$log_output" | grep -F "Ticket #${ticket_number} (Pt." | grep -oP 'Pt\.\K\d+' | sort -n | tail -1)
+
+    if [[ -z "$max_part" ]]; then
+        echo "1"
+    else
+        echo "$((max_part + 1))"
+    fi
+}
+
 # Efetuar commit
 function commit() {
     local BRANCH=$(git branch --show-current)
@@ -110,13 +133,7 @@ function commit() {
         return 1
     fi
 
-    LAST_COMMIT=$(git log -1 --pretty=%B | grep -oP 'Pt\.\K\d+')
-
-    if [[ -z "$LAST_COMMIT" ]]; then
-        PART_NUMBER=1
-    else
-        PART_NUMBER=$((LAST_COMMIT + 1))
-    fi
+    PART_NUMBER=$(tb__find_highest_part "$TICKET_NUMBER")
 
     TICKET_PART="Pt.$PART_NUMBER"
 
