@@ -28,3 +28,4 @@ Ticket #10 (Pt.1) - feat: outro
 Ticket #20 (Pt.3) - fix: outro
 Ticket #30 (Pt.2) - docs: outro
 Ticket #42 (Pt.abc) - feat: malformado
+Ticket #42 (Pt.2) - fix: valido
