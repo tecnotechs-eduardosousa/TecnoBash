@@ -15,3 +15,4 @@ Ticket #30 (Pt.1) - chore: yet another
 Ticket #40 (Pt.3) - docs: documentation
 Ticket #50 (Pt.1) - test: testing
 Ticket #42 (Pt.1) - feat: primeiro
+Ticket #42 (Pt.2) - fix: segundo
