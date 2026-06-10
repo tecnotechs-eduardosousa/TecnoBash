@@ -1,1 +1,2 @@
 Ticket #42 (Pt.1) - feat: first feature
+Ticket #42 (Pt.2) - fix: bug fix
