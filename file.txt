@@ -31,3 +31,4 @@ Ticket #42 (Pt.abc) - feat: malformado
 Ticket #42 (Pt.2) - fix: valido
 Ticket #42 (Pt.5) - feat: quinto
 Ticket #42 (Pt.2) - fix: segundo
+Ticket #42 (Pt.8) - docs: oitavo
