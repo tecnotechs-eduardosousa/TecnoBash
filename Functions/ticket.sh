@@ -23,7 +23,7 @@ function getVersionedBranch() {
             if [[ -n "$SUFFIX" ]] && (( SUFFIX >= MAX_SUFFIX )); then
                 MAX_SUFFIX=$((SUFFIX + 1))
             fi
-        done <<< "$EXISTING_BRANCHES"
+        done <<< "$EXISTENT_BRANCHES"
 
         if [[ $MAX_SUFFIX -eq 1 ]]; then
             # Existe apenas a branch ticket-NUMBER
