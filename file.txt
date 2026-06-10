@@ -13,3 +13,4 @@ Ticket #10 (Pt.1) - feat: other
 Ticket #20 (Pt.2) - fix: another
 Ticket #30 (Pt.1) - chore: yet another
 Ticket #40 (Pt.3) - docs: documentation
+Ticket #50 (Pt.1) - test: testing
