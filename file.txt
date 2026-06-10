@@ -25,3 +25,4 @@ Ticket #4 (Pt.2) - fix: ticket quatro
 Ticket #4 (Pt.3) - docs: ticket quatro
 Ticket #42 (Pt.1) - feat: ticket quarenta e dois
 Ticket #10 (Pt.1) - feat: outro
+Ticket #20 (Pt.3) - fix: outro
