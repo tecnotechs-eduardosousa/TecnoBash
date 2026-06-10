@@ -18,3 +18,4 @@ Ticket #42 (Pt.1) - feat: primeiro
 Ticket #42 (Pt.2) - fix: segundo
 Ticket #42 (Pt.3) - refactor: terceiro
 Ticket #42 (Pt.1) - feat: inicio
+Ticket #99 (Pt.5) - fix: outro ticket
