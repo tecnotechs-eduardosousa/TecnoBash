@@ -12,3 +12,4 @@ Ticket #42 (Pt.1) - fix: ticket forty-two
 Ticket #10 (Pt.1) - feat: other
 Ticket #20 (Pt.2) - fix: another
 Ticket #30 (Pt.1) - chore: yet another
+Ticket #40 (Pt.3) - docs: documentation
