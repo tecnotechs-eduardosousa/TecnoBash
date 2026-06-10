@@ -120,6 +120,7 @@ function tecnobash(){
         "Pull Corporativo e Serviços|Functions/pulls.sh|cpull"
         "Pull Diário|Functions/pulls.sh|dp"
         "Push|Functions/pushes.sh|push"
+        "Cherry-pick interativo|Functions/cherry-pick.sh|cpick"
         "Criar Branch de Ticket|Functions/ticket.sh|crtkt"
         "Trocar Branch de Ticket|Functions/ticket.sh|tkt"
         "Executar Testes Unitários|Functions/ticket-testing.sh|test"
@@ -145,7 +146,7 @@ function tecnobash(){
     echo ""
     local -A category_map
     category_map=(
-        "Git" $'Efetuar commit|Functions/commit.sh|commit\nDesfazer último commit (soft)|Functions/commit.sh|soft\nPull|Functions/pulls.sh|pull\nPull Corporativo e Serviços|Functions/pulls.sh|cpull\nPull Diário|Functions/pulls.sh|dp\nPush|Functions/pushes.sh|push'
+        "Git" $'Efetuar commit|Functions/commit.sh|commit\nDesfazer último commit (soft)|Functions/commit.sh|soft\nPull|Functions/pulls.sh|pull\nPull Corporativo e Serviços|Functions/pulls.sh|cpull\nPull Diário|Functions/pulls.sh|dp\nPush|Functions/pushes.sh|push\nCherry-pick interativo|Functions/cherry-pick.sh|cpick'
         "Tickets" $'Criar Branch de Ticket|Functions/ticket.sh|crtkt\nTrocar Branch de Ticket|Functions/ticket.sh|tkt'
         "Branches" $'Trocar para branch de Desenvolvimento|Functions/main-branches-switching.sh|dev\nTrocar para branch de Produção|Functions/main-branches-switching.sh|prod'
         "Testes" $'Executar Testes Unitários|Functions/ticket-testing.sh|test\nExecutar Testes de Integração|Functions/ticket-testing.sh|testi'
